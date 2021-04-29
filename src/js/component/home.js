@@ -1,24 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+export function TrafficLight() {
+	let redLight = "#F8AE56";
+	let yellowLight = "#EEF856";
+	let greenLight = "green";
 
-//create your first component
-export function Home() {
+	const [red, setRed] = useState(redLight);
+	const [yellow, setYellow] = useState(yellowLight);
+	const [green, setGreen] = useState(greenLight);
+
+	const redButton = {
+		backgroundColor: red
+	};
+	const yellowButton = {
+		backgroundColor: yellow
+	};
+	const greenButton = {
+		backgroundColor: green
+	};
+
+	const setRedLight = () => {
+		setRed("red");
+		setYellow(yellowLight);
+		setGreen(greenLight);
+	};
+	const setYellowLight = () => {
+		setYellow("yellow");
+		setRed(redLight);
+		setGreen(greenLight);
+	};
+	const setGreenLight = () => {
+		setGreen("#47FA02");
+		setRed(redLight);
+		setYellow(yellowLight);
+	};
+
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="traffic bg-dark mt-5">
+			<button
+				className="dot"
+				style={redButton}
+				onClick={setRedLight}></button>
+			<button
+				className="dot"
+				style={yellowButton}
+				onClick={setYellowLight}></button>
+			<button
+				className="dot"
+				style={greenButton}
+				onClick={setGreenLight}></button>
 		</div>
 	);
 }
