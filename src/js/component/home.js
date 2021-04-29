@@ -8,6 +8,7 @@ export function TrafficLight() {
 	const [red, setRed] = useState(redLight);
 	const [yellow, setYellow] = useState(yellowLight);
 	const [green, setGreen] = useState(greenLight);
+	const [shadow, setShadow] = useState("");
 
 	const redButton = {
 		backgroundColor: red
@@ -23,30 +24,33 @@ export function TrafficLight() {
 		setRed("red");
 		setYellow(yellowLight);
 		setGreen(greenLight);
+		setShadow("luz1");
 	};
 	const setYellowLight = () => {
 		setYellow("yellow");
 		setRed(redLight);
 		setGreen(greenLight);
+		setShadow("luz2");
 	};
 	const setGreenLight = () => {
 		setGreen("#47FA02");
 		setRed(redLight);
 		setYellow(yellowLight);
+		setShadow("luz3");
 	};
 
 	return (
 		<div className="traffic bg-dark mt-5">
 			<button
-				className="dot"
+				className={shadow + " dot"}
 				style={redButton}
 				onClick={setRedLight}></button>
 			<button
-				className="dot"
+				className={shadow + " dot"}
 				style={yellowButton}
 				onClick={setYellowLight}></button>
 			<button
-				className="dot"
+				className={shadow + " dot"}
 				style={greenButton}
 				onClick={setGreenLight}></button>
 		</div>
